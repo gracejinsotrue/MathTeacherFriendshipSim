@@ -1447,9 +1447,9 @@ private void switchToNextScene12(Stage primaryStage) {
         // Add key event listener for arrow keys to navigate scenes
         newScene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.RIGHT) {
-                switchToNextScene13(primaryStage);//always the bigger number
+                switchToNextScene14(primaryStage);//always the bigger number
             } else if (event.getCode() == KeyCode.LEFT) {
-                switchToNextScene11(primaryStage);
+                switchToNextScene12(primaryStage);
             }
         });
         }
@@ -2273,7 +2273,7 @@ private void switchToNextScene12(Stage primaryStage) {
             story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
         
             // Animation for text dialogue
-            final String story2Content = "         Oh... he's pretty cool.";
+            final String story2Content = "         I wonder if I will see him again...";
             final int instantCharactersCount = 10; // Number of characters to show instantly
         
             final Animation story2Animation = new Transition() {
@@ -2459,8 +2459,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story4Node.setPadding(new Insets(20));
         story4Node.setHgap(10);
         story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
-          
+       
     
         // Load and set the background image
         Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/hallway.png"));
@@ -2688,7 +2687,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story16Node.setBackground(new Background(background));
     
         // Create the question label
-        Label story16Question = new Label("What is the derivative of (1-8z)^1/3?");
+        Label story16Question = new Label("         What is the derivative of (1-8z)^1/3?");
         story16Question.setMinWidth(700);
         story16Question.setMaxWidth(700);
         story16Question.setMinHeight(60);
@@ -2946,118 +2945,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
     
         // Animation for text dialogue
-        final String story2Content = "         You intrude on Mr. Enriquez teaching Math 1.";
-        final int instantCharactersCount = 10; // Number of characters to show instantly
-    
-        final Animation story2Animation = new Transition() {
-            {
-                setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
-            }
-    
-            protected void interpolate(double frac) {
-                int totalLength = story2Content.length();
-                int remainingCharacters = totalLength - instantCharactersCount;
-                if (remainingCharacters > 0) {
-                    // Calculate the index of the last character to be shown for the current fraction
-                    int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
-                    story2Label.setText(story2Content.substring(0, index));
-            }else {
-                // If the content is shorter than the number of instant characters, show it all instantly
-                story2Label.setText(story2Content);
-            }
-        };};
-        
-        story2Animation.play();
-    
-    
-        // Add elements to GridPane
-        story4Node.add(story2Speaker, 2, 2);
-        story4Node.add(story2Label, 2, 3);
-        story4Node.add(story2Blank, 1, 2, 1, 1);
-        story4Node.add(story2Blank1, 1, 3, 1, 1);
-    
-        // Define row and column constraints
-    
-        RowConstraints story2row1 = new RowConstraints();
-        story2row1.setMinHeight(210);
-        RowConstraints story2row2 = new RowConstraints();
-        story2row2.setMinHeight(210);
-        RowConstraints story2row3 = new RowConstraints();
-        story2row3.setMinHeight(0);
-        RowConstraints story2row4 = new RowConstraints();
-        story2row4.setMinHeight(0);
-    
-        
-        ColumnConstraints story2col1 = new ColumnConstraints();
-        story2col1.setMinWidth(0); // Increase left margin
-        ColumnConstraints story2col2 = new ColumnConstraints();
-        story2col2.setMinWidth(20); // Spacer or small content
-        ColumnConstraints story2col3 = new ColumnConstraints();
-        story2col3.setMinWidth(800); // Increase width for main text content
-        ColumnConstraints story2col4 = new ColumnConstraints();
-        story2col4.setMinWidth(800); // Adjust right padding
-    
-    
-        story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
-        story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
-    
-        // Create and set the new scene
-        Scene newScene = new Scene(story4Node, 1280, 720);
-        primaryStage.setScene(newScene);
-        // Add key event listener for arrow keys to navigate scenes
-        newScene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.RIGHT) {
-                switchToNextScene28(primaryStage);//always the bigger number
-            } else if (event.getCode() == KeyCode.LEFT) {
-                switchToNextScene23(primaryStage);
-
-            } 
-        });
-    }
-
-    private void switchToNextScene28(Stage primaryStage) { 
-        GridPane story4Node = new GridPane();
-        story4Node.setPadding(new Insets(20));
-        story4Node.setHgap(10);
-        story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
-          
-    
-        // Load and set the background image
-        Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/classroom.png"));
-        BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
-        story4Node.setBackground(new Background(background));
-           // Create a Label for the speaker
-        Label story2Speaker = new Label();
-        story2Speaker.setText("Narrator");
-        story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
-        
-        story2Speaker.setAlignment(Pos.CENTER_LEFT);
-        story2Speaker.setAlignment(Pos.CENTER_LEFT);
-    
-        // Create a Label for the story text
-        Label story2Label = new Label();
-        story2Label.setWrapText(true);
-        story2Label.setMinWidth(1140);
-        story2Label.setMaxWidth(1140);
-        story2Label.setMinHeight(150);
-        story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
-        story2Label.setAlignment(Pos.CENTER_LEFT);
-    
-        // Create blank labels for spacing
-        Label story2Blank = new Label();
-        story2Blank.setMinWidth(100);
-        story2Blank.setMinHeight(0);
-        story2Blank.setStyle("-fx-background-color: transparent");
-    
-        Label story2Blank1 = new Label();
-        story2Blank1.setMinWidth(0);
-        story2Blank1.setMinHeight(100);
-        story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
-    
-        // Animation for text dialogue
-        final String story2Content = "         You intrude on Mr. Enriquez teaching Math 1.";
+        final String story2Content = "         You intrude on Mr. Enriquez teaching Math 1."; //replace bg with classroom?
         final int instantCharactersCount = 10; // Number of characters to show instantly
     
         final Animation story2Animation = new Transition() {
@@ -3120,12 +3008,13 @@ private void switchToNextScene12(Stage primaryStage) {
             if (event.getCode() == KeyCode.RIGHT) {
                 switchToNextScene29(primaryStage);//always the bigger number
             } else if (event.getCode() == KeyCode.LEFT) {
-                switchToNextScene27(primaryStage);
+                switchToNextScene26(primaryStage);
 
             } 
         });
     }
 
+   
 
 
 
@@ -3134,7 +3023,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story4Node.setPadding(new Insets(20));
         story4Node.setHgap(10);
         story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
+      
           
     
         // Load and set the background image
@@ -3234,7 +3123,7 @@ private void switchToNextScene12(Stage primaryStage) {
             if (event.getCode() == KeyCode.RIGHT) {
                 switchToNextScene30(primaryStage);//always the bigger number
             } else if (event.getCode() == KeyCode.LEFT) {
-                switchToNextScene28(primaryStage);
+                switchToNextScene27(primaryStage);
 
             } 
         });
@@ -3245,7 +3134,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story4Node.setPadding(new Insets(20));
         story4Node.setHgap(10);
         story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
+        
           
     
         // Load and set the background image
@@ -3356,7 +3245,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story4Node.setPadding(new Insets(20));
         story4Node.setHgap(10);
         story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
+    
           
     
         // Load and set the background image
@@ -3467,8 +3356,7 @@ private void switchToNextScene12(Stage primaryStage) {
         story4Node.setPadding(new Insets(20));
         story4Node.setHgap(10);
         story4Node.setVgap(10); 
-        applyFadeTransition(story4Node);
-          
+     
     
         // Load and set the background image
         Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/classroomenriquehappy.png"));
@@ -3632,7 +3520,7 @@ private void switchToNextScene33(Stage primaryStage) {
         primaryStage.setScene(newScene);
     newScene.setOnKeyPressed(event->{
         if(event.getCode()==KeyCode.LEFT){
-            switchToNextScene10(primaryStage);
+            switchToNextScene32(primaryStage);
         }
     });
     
@@ -3655,7 +3543,7 @@ private void switchToNextScene34(Stage primaryStage) {
     story4Node.setPadding(new Insets(20));
     story4Node.setHgap(10);
     story4Node.setVgap(10); 
-    applyFadeTransition(story4Node);
+   
       
 
     // Load and set the background image
@@ -3762,13 +3650,12 @@ private void switchToNextScene34(Stage primaryStage) {
 }
 
 
-
 private void switchToNextScene35(Stage primaryStage) { 
     GridPane story4Node = new GridPane();
     story4Node.setPadding(new Insets(20));
     story4Node.setHgap(10);
     story4Node.setVgap(10); 
-    applyFadeTransition(story4Node);
+    
       
 
     // Load and set the background image
@@ -3878,25 +3765,4212 @@ private void switchToNextScene35(Stage primaryStage) {
 
 
 
+private void switchToNextScene36(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+   
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/surprisedenrique.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         ..............................";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene37(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene32(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+private void switchToNextScene37(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/surprisedenrique.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         That's a little offensive, isn't it...";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene38(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene36(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+
+private void switchToNextScene38(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/surprisedenrique.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("???");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Heck! My joke game wasn’t very #poggers it seems. Time to go watch K-Dramas and cry on my desk...";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene39(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene37(primaryStage);
+
+        } 
+    });
+}
+
+
+//rememebr to fade scnee 
+
+private void switchToNextScene39(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    applyFadeTransition(story4Node);
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/demonslayer.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Narrator");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         You are reading your favorite manga, Demon Slayer.";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene40(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene38(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene40(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+   
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/wificut.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Narrator");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Suddenly, the wifi cuts.... You are mad! RGRRH..!!! You were getting to the best part!";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene41(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene39(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene41(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phone.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Narrator");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         You call Mr. Enriquez on the phone.";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene42(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene40(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene42(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+  
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phonewithguy.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("???");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         K-Kamusta kuya Rey..! Uh-uh- erm.. w-what's the wifi password?";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene43(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene41(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+private void switchToNextScene43(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+  
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phonewithguysurprise.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Kamusta. I’ll tell you if you can complete these three Calculus problems.";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene44(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene42(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+private void switchToNextScene44(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phonewithguysurprise.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("???");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Are we gatekeeping wifi passwords now? Ugh whatever..The things I do for my favorite fellow math fan....";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene45(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene43(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene45(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("            v(x) = x^3 - x^2 + x - 1, v^4(x) = ?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 2x");
+    Button story16Button2 = new Button("            b) 3x^2 + 2x + 1");
+    Button story16Button3 = new Button("            c) 0");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Remember to derive it four times!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    story16Button2.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Correct answer - move to the next scene
+        switchToNextScene46(primaryStage); 
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+private void switchToNextScene46(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("            What is the second derivative of cos^2(7t)?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 98sin^2(7t) - 98cos^2(7t)");
+    Button story16Button2 = new Button("            b) 49sin^2(7t) - 49cos^2(7t)");
+    Button story16Button3 = new Button("            c) 98cos^2(7t) - 98sin^2(7t)");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Do you remember your trig derivatives?";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // correct, move on
+        switchToNextScene47(primaryStage);
+        
+    });
+
+    story16Button2.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    story16Button3.setOnAction(event -> {
+        // incorrect
+        story16Animation.playFromStart();
+         
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+
+private void switchToNextScene47(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("What is the second derivative of y = ln(7-x^3)?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) -3x^2/(7-x^3))");
+    Button story16Button2 = new Button("            b) (-42x-3x^4)/(7-x^3)^2");
+    Button story16Button3 = new Button("            c) (7-x^2)/-3x^2");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Do you remember your trig derivatives?";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+        
+    });
+
+    story16Button2.setOnAction(event -> {
+        // correct, move on
+        switchToNextScene48(primaryStage);
+        
+    });
+
+    story16Button3.setOnAction(event -> {
+        // incorrect
+        story16Animation.playFromStart();
+         
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+private void switchToNextScene48(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+      
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phonewithguy.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Well done! The password is newtonEulerFan112358!";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene49(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene45(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene49(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/phonewithguysurprise.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("???");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Thanks...";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene50(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene48(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene50(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/packingup.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Narrator");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         You are packing up your backpack. You reflect on the day and the amount of work you have to do after school";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene51(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene49(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene51(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/packingupenrique.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("???");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         At least I got to speak to kuya Enriquez today.. he’s very interesting… ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene52(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene50(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene52(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    applyFadeTransition(story4Node);
+    
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillapeek.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Narrator");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         You are very busy but would like an opportunity to talk to kuya Rey.. ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene53(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene51(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene53(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroom.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Rey, would you like to grade papers with me? My AP Calc AB classes suck. ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene54(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene52(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene54(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
 
     
     
 
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroomsmileenriquez.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
     
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Of course!! I love Calculus! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
     
+    story2Animation.play();
 
 
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
 
+    // Define row and column constraints
 
-
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
 
     
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
 
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene55(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene53(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene55(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("y=6y-xy^2-1, y'=?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) y(6-xy)");
+    Button story16Button2 = new Button("            b) 6-2xy");
+    Button story16Button3 = new Button("            c) y^2(6-2xy)");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Try double-checking your coefficients!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    story16Button2.setOnAction(event -> {
+        
+         // Correct answer - move to the next scene
+         switchToNextScene56(primaryStage);
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+
+private void switchToNextScene56(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("f(x)=8x^3 + 4x^2");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 24x^2 + 8x");
+    Button story16Button2 = new Button("            b) 4x^4 + 2x^3");
+    Button story16Button3 = new Button("            c) 48x + 8");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Try double-checking your coefficients!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        
+         // Correct answer - move to the next scene
+         switchToNextScene57(primaryStage);
+        
+    });
+
+    story16Button2.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+
+private void switchToNextScene57(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("What is the derivative of 9x^7 + 4x^1/2?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 28x^3 + 4x");
+    Button story16Button2 = new Button("            b) 63x^6 + 2x^-1/2");
+    Button story16Button3 = new Button("            c) 63x^6 + 2x^1/2");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Try double-checking your coefficients!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+
+               
+    });
+
+    story16Button2.setOnAction(event -> {
+ 
+        
+         // Correct answer - move to the next scene
+         switchToNextScene58(primaryStage);
+        
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+private void switchToNextScene58(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("What is the second derivative of 4x + 9?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 0");
+    Button story16Button2 = new Button("            b) 4");
+    Button story16Button3 = new Button("            c) 4x");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Remember to derive twice!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        
+         // Correct answer - move to the next scene
+         switchToNextScene59(primaryStage);
+
+               
+    });
+
+    story16Button2.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+        
+        
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+private void switchToNextScene59(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
+    
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("What is the fourth derivative of 9x^3+11x^2?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 27x^2 + 22");
+    Button story16Button2 = new Button("            b) 0");
+    Button story16Button3 = new Button("            c) 54x + 22");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Remember to derive four times!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+         // Incorrect answer
+         story16Animation.playFromStart();
+       
+               
+    });
+
+    story16Button2.setOnAction(event -> {
+       
+          // Correct answer - move to the next scene
+          switchToNextScene60(primaryStage);
 
         
-
         
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+
+private void switchToNextScene60(Stage primaryStage) { // calculus
+    GridPane story16Node = new GridPane();
     
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/paper.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story16Node.setBackground(new Background(background));
+
+    // Create the question label
+    Label story16Question = new Label("What is the second derivative of 12x^2 + 4x^1?");
+    story16Question.setMinWidth(700);
+    story16Question.setMaxWidth(700);
+    story16Question.setMinHeight(60);
+    story16Question.setMaxHeight(60);
+    story16Question.setStyle("-fx-background-color:transparent;-fx-font-size:200%;-fx-text-fill:black;-fx-font-weight:bold;");
+    story16Question.setAlignment(Pos.CENTER);
+
+    // Create the feedback label
+    Label story16Label = new Label("");
+    story16Label.setMinWidth(700);
+    story16Label.setMaxWidth(700);
+    story16Label.setMinHeight(40);
+    story16Label.setMaxHeight(40);
+    story16Label.setStyle("-fx-text-fill:black;-fx-font-size:200%;-fx-background-color:transparent");
+    story16Label.setAlignment(Pos.BOTTOM_CENTER); // Align at the bottom center
+
+    // Define buttons for answer options
+    Button story16Button1 = new Button("            a) 24");
+    Button story16Button2 = new Button("            b) 24x + 4");
+    Button story16Button3 = new Button("            c) 0");
+
+    // Styling buttons
+    String buttonStyle = "-fx-background-color:transparent;-fx-font-size:200%;-fx-border-width:1px";
+    story16Button1.setStyle(buttonStyle);
+    story16Button2.setStyle(buttonStyle);
+    story16Button3.setStyle(buttonStyle);
+
+    story16Button1.setFocusTraversable(false);
+    story16Button2.setFocusTraversable(false);
+    story16Button3.setFocusTraversable(false);
+
+    story16Button1.setMinSize(500, 150);
+    story16Button2.setMinSize(500, 150);
+    story16Button3.setMinSize(500, 150);
+
+    story16Button1.setMaxSize(500, 150);
+    story16Button2.setMaxSize(500, 150);
+    story16Button3.setMaxSize(500, 150);
+
+    story16Button1.setAlignment(Pos.CENTER);
+    story16Button2.setAlignment(Pos.CENTER);
+    story16Button3.setAlignment(Pos.CENTER);
+
+    // Set up the animation for wrong answers
+    final Animation story16Animation = new Transition() {
+        final String story16Content = "Remember to derive twice!";
+        {
+            setCycleDuration(Duration.millis(4000));
+        }
+
+        protected void interpolate(double frac) {
+            final int story16Length = story16Content.length();
+            final int story16N = Math.round(story16Length * (float) frac);
+            story16Label.setText(story16Content.substring(0, story16N));
+        }
+    };
+
+    // Event handlers for buttons
+    story16Button1.setOnAction(event -> {
+        // Correct answer - move to the next scene
+        switchToNextScene61(primaryStage);
+         
+               
+    });
+
+    story16Button2.setOnAction(event -> {
+       // Incorrect answer
+       story16Animation.playFromStart();
+        
+    });
+
+    story16Button3.setOnAction(event -> {
+        // Incorrect answer
+        story16Animation.playFromStart();
+    });
+
+    // Add components to the GridPane
+    story16Node.add(story16Question, 1, 1, 1, 1);
+    story16Node.add(story16Button1, 1, 2);
+    story16Node.add(story16Button2, 1, 3);
+    story16Node.add(story16Button3, 1, 4);
+    story16Node.add(story16Label, 1, 5, 1, 1); // Add the feedback label to the last row
+
+    // Set row and column constraints
+    story16Node.getRowConstraints().addAll(
+        new RowConstraints(70),  // Question
+        new RowConstraints(150), // Button 1
+        new RowConstraints(150), // Button 2
+        new RowConstraints(150), // Button 3
+        new RowConstraints(60)   // Feedback Label
+    );
+
+    story16Node.getColumnConstraints().addAll(
+        new ColumnConstraints(270, 270, 270, Priority.ALWAYS, HPos.CENTER, true), // center column
+        new ColumnConstraints(500) // make this larger to push elements to center
+    );
+
+    // Create and set the scene
+    Scene story16Scene = new Scene(story16Node, 1280, 720);
+    primaryStage.setScene(story16Scene);
+    primaryStage.show();
+}
+
+
+
+private void switchToNextScene61(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroom.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         *sigh* My students are such a pain. Lower life forms are such handful. But, *you* must like your students, huh? ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene62(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene60(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene62(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevilla.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Oh no, not at all. I made sure to give all my students very hard problems on their tests. ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene63(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene61(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+private void switchToNextScene63(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevilla.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         O-oh yeah? Give me an example. ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene64(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene62(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+
+
+private void switchToNextScene64(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevillaenriquetal.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         One time, i gave them a TRICK question in order to ensure they failed. I TOLD THEM TO COUNT RECURSIONS but there WERE NO recursions!! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene65(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene63(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene65(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevilla.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         WHAT n-n-no fair!!! I have a reputation to hold as the most difficult teacher in the math department!!!! IM LEAVING!!! CONSIDE OUR RELATIONSHIP #OVER!! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene66(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene64(primaryStage);
+
+        } 
+    });
+}
+
+
+
+
+private void switchToNextScene66(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevillasurprisedenriquez.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Wait..! Don’t go… ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene67(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene65(primaryStage);
+
+        } 
+    });
+}
+
+
+private void switchToNextScene67(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/shockedsevillasurprisedenriquez.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         What!? What do you want! Stupid! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene68(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene66(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene68(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroomsmileenriquez.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr.Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         We can’t end our friendship like this.. You’re one of the few teachers I can rant about math theorems with… i’m sorry...please forgive me? ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene69(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene67(primaryStage);
+
+        } 
+    });
+}
+
+
+
+private void switchToNextScene69(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroom.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         I guess I let my ego get to me again, didn’t I? Ugh, you know what? Screw this! let’s take out our anger on our students and make their finals impossible! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene70(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene68(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene70(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroomsmileenriquez.png"));
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Enriquez");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "         Yeah! Let’s see who can bring their class average closest to 0. Loser has to buy the winner a limited edition Ron Larson calc book! ";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene71(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene69(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene71(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+
+    
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/sevillaclassroomsmileenriquez.png")); //replace this image with sevilla smiling
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("Mr. Sevilla");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "        Deal!";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene72(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene70(primaryStage);
+
+        } 
+    });
+}
+
+private void switchToNextScene72(Stage primaryStage) { 
+    GridPane story4Node = new GridPane();
+    story4Node.setPadding(new Insets(20));
+    story4Node.setHgap(10);
+    story4Node.setVgap(10); 
+    applyFadeTransition(story4Node);
+
+    
+
+    // Load and set the background image
+    Image storyBackgroundImage = new Image(getClass().getResourceAsStream("/images/endscreen.png")); //replace this image with sevilla smiling
+    BackgroundImage background = new BackgroundImage(storyBackgroundImage, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1280, 720, true, true, false, true));
+    story4Node.setBackground(new Background(background));
+       // Create a Label for the speaker
+    Label story2Speaker = new Label();
+    story2Speaker.setText("");
+    story2Speaker.setStyle("-fx-text-fill: white; -fx-font-size: 250%; -fx-font-weight: bold;");
+    
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+    story2Speaker.setAlignment(Pos.CENTER_LEFT);
+
+    // Create a Label for the story text
+    Label story2Label = new Label();
+    story2Label.setWrapText(true);
+    story2Label.setMinWidth(1140);
+    story2Label.setMaxWidth(1140);
+    story2Label.setMinHeight(150);
+    story2Label.setStyle("-fx-text-fill: black; -fx-font-size: 200%; -fx-background-color: rgba(255,255,255,0.7);");
+    story2Label.setAlignment(Pos.CENTER_LEFT);
+
+    // Create blank labels for spacing
+    Label story2Blank = new Label();
+    story2Blank.setMinWidth(100);
+    story2Blank.setMinHeight(0);
+    story2Blank.setStyle("-fx-background-color: transparent");
+
+    Label story2Blank1 = new Label();
+    story2Blank1.setMinWidth(0);
+    story2Blank1.setMinHeight(100);
+    story2Blank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+
+    // Animation for text dialogue
+    final String story2Content = "        LMFAOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
+    final int instantCharactersCount = 10; // Number of characters to show instantly
+
+    final Animation story2Animation = new Transition() {
+        {
+            setCycleDuration(Duration.millis(3000)); // Total duration for the animated part
+        }
+
+        protected void interpolate(double frac) {
+            int totalLength = story2Content.length();
+            int remainingCharacters = totalLength - instantCharactersCount;
+            if (remainingCharacters > 0) {
+                // Calculate the index of the last character to be shown for the current fraction
+                int index = instantCharactersCount + Math.round(remainingCharacters * (float) frac);
+                story2Label.setText(story2Content.substring(0, index));
+        }else {
+            // If the content is shorter than the number of instant characters, show it all instantly
+            story2Label.setText(story2Content);
+        }
+    };};
+    
+    story2Animation.play();
+
+
+    // Add elements to GridPane
+    story4Node.add(story2Speaker, 2, 2);
+    story4Node.add(story2Label, 2, 3);
+    story4Node.add(story2Blank, 1, 2, 1, 1);
+    story4Node.add(story2Blank1, 1, 3, 1, 1);
+
+    // Define row and column constraints
+
+    RowConstraints story2row1 = new RowConstraints();
+    story2row1.setMinHeight(210);
+    RowConstraints story2row2 = new RowConstraints();
+    story2row2.setMinHeight(210);
+    RowConstraints story2row3 = new RowConstraints();
+    story2row3.setMinHeight(0);
+    RowConstraints story2row4 = new RowConstraints();
+    story2row4.setMinHeight(0);
+
+    
+    ColumnConstraints story2col1 = new ColumnConstraints();
+    story2col1.setMinWidth(0); // Increase left margin
+    ColumnConstraints story2col2 = new ColumnConstraints();
+    story2col2.setMinWidth(20); // Spacer or small content
+    ColumnConstraints story2col3 = new ColumnConstraints();
+    story2col3.setMinWidth(800); // Increase width for main text content
+    ColumnConstraints story2col4 = new ColumnConstraints();
+    story2col4.setMinWidth(800); // Adjust right padding
+
+
+    story4Node.getRowConstraints().addAll(story2row1, story2row2, story2row3, story2row4);
+    story4Node.getColumnConstraints().addAll(story2col1, story2col2, story2col3, story2col4);
+
+    // Create and set the new scene
+    Scene newScene = new Scene(story4Node, 1280, 720);
+    primaryStage.setScene(newScene);
+    // Add key event listener for arrow keys to navigate scenes
+    newScene.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.RIGHT) {
+            switchToNextScene72(primaryStage);//always the bigger number
+        } else if (event.getCode() == KeyCode.LEFT) {
+            switchToNextScene70(primaryStage);
+
+        } 
+    });
+}
+        
     
 
     
