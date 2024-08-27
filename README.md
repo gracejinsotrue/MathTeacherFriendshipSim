@@ -8,3 +8,6 @@ Requirements: JDK 11 or higher
 To build the project, use Maven:
 ```bash
 mvn clean install
+
+
+![background_image](https://github.com/user-attachments/assets/e5c18950-046c-485b-849a-07ecfa6a0e79)
