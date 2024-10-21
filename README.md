@@ -5,7 +5,8 @@
 Funny 8,000 lines of code game! You play as a math teacher who is infatuated with another math teacher, and to win his heart you must solve math problems. 
 Use Left and Right arrow keys to go to the next and previous scene, respectively.
 
-Requirements: JDK 17 or higher
+Requirements: JDK 11 or higher
+
 
 
 ## Building the Project 
