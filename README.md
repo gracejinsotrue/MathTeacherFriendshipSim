@@ -13,6 +13,7 @@ Requirements: JDK 17 or higher
 -To build the project, use Maven:
 ```bash
 mvn clean install
+```
 
 ```bash
 mvn javafx:run
