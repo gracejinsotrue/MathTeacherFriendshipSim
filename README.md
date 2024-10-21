@@ -10,8 +10,8 @@ Requirements: JDK 11 or higher
 
 
 ## Building the Project 
-Git clone the repo
-Go to the MathTeacherFriendshipSim directory
+Git clone the repo <br/>
+Go to the MathTeacherFriendshipSim directory  <br/>
 To build the project, use Maven:
 ```bash
 mvn clean install
