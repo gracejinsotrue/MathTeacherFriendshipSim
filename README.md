@@ -19,7 +19,7 @@ mvn javafx:run
 ```
 
 ## Building the Project in IDE: 
-just run App.Java in MathTeacherFriendshipSim/src/main/java/com/example/
+just run App.Java in MathTeacherFriendshipSim/src/main/java/com/example/App.Java
 
 
 
