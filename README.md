@@ -9,7 +9,7 @@ Requirements: JDK 11 or higher
 
 
 
-## Building the Project 
+## Building the Project In Terminal:
 Git clone the repo <br/>
 Go to the MathTeacherFriendshipSim directory  <br/>
 To build the project, use Maven:
@@ -17,6 +17,9 @@ To build the project, use Maven:
 mvn clean install
 mvn javafx:run
 ```
+
+## Building the Project in IDE: 
+just run App.Java in MathTeacherFriendshipSim/src/main/java/com/example/
 
 
 
